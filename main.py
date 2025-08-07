@@ -1,15 +1,40 @@
-import os
+import sys
 
-# Paths to each experiment
-agriculture_path = "Smart Agriculture Smulation/quality_agriculture.py"
-industrial_path = "Smart Industrial Quality Evaluation/quality_industrial.py"
+# Function to run agriculture simulation
+def run_agriculture_simulation():
+    print("Running Smart Agriculture Simulation...")
+    # Add agriculture simulation logic here
 
-# Run Smart Agriculture Simulation
-print("Running Smart Agriculture Simulation...")
-os.system(f"python \"{agriculture_path}\"")
+# Function to run industrial simulation
+def run_industrial_simulation():
+    print("Running Smart Industrial Simulation...")
+    # Add industrial simulation logic here
 
-# Run Smart Industrial Quality Evaluation
-print("\nRunning Smart Industrial Quality Evaluation...")
-os.system(f"python \"{industrial_path}\"")
+# Entry point
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Please specify a simulation type: 'agriculture' or 'industrial'")
+        sys.exit(1)
 
-print("\nAll experiments completed. Check the 'results' folders for outputs.")
+    simulation_type = sys.argv[1].lower()
+
+    if simulation_type == "agriculture":
+        run_agriculture_simulation()
+    elif simulation_type == "industrial":
+        run_industrial_simulation()
+    else:
+        print(f"Unknown simulation type: {simulation_type}")
+        sys.exit(1)
+
+*🐳 `docker-compose.yml` with simulation type specified:*
+
+version: '3.8'
+
+services:
+  iot-quality-eval:
+    build:.
+    container_name: iot_quality_container
+    working_dir: /app
+    volumes:
+      -.:/app
+    command: python main.py agriculture
