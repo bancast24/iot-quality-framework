@@ -1,14 +1,15 @@
 import sys
+import subprocess
 
-# Function to run agriculture simulation
+# Run Smart Agriculture Simulation
 def run_agriculture_simulation():
     print("Running Smart Agriculture Simulation...")
-    # Add agriculture simulation logic here
+    subprocess.run(["python", "Smart Agriculture Simulation/quality_agriculture.py"])
 
-# Function to run industrial simulation
+# Run Smart Industrial Simulation
 def run_industrial_simulation():
     print("Running Smart Industrial Simulation...")
-    # Add industrial simulation logic here
+    subprocess.run(["python", "Smart Industrial Quality Evaluation/quality_industrail.py"])
 
 # Entry point
 if __name__ == "__main__":
@@ -25,16 +26,3 @@ if __name__ == "__main__":
     else:
         print(f"Unknown simulation type: {simulation_type}")
         sys.exit(1)
-
-*🐳 `docker-compose.yml` with simulation type specified:*
-
-version: '3.8'
-
-services:
-  iot-quality-eval:
-    build:.
-    container_name: iot_quality_container
-    working_dir: /app
-    volumes:
-      -.:/app
-    command: python main.py agriculture
