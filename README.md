@@ -4,36 +4,64 @@ This repository contains two experimental pipelines for evaluating quality impro
 
 ## 1. Smart Agriculture Simulation
 
-This experiment simulates a smart farming scenario using synthetic sensor data. It applies Random Forest regression to assign weights to key performance indicators and evaluates the impact on overall quality scores.
+Simulates a smart farming scenario using synthetic sensor data. Applies Random Forest regression to assign weights to key performance indicators and evaluates the impact on overall quality scores.
 
-Folder: Smart agriculture simulation
+Folder: `Smart Agriculture Simulation`
 
 Contents:
-- data/agriculture_simulation_data.csv
-- quality_agriculture.py
-- results/agriculture_results.txt
-- results/agriculture_quality_distribution.png
-- requirements.txt
-- README.md
+`data/agriculture_simulation_data.csv`
+- `quality_agriculture.py`
+- `results/agriculture_results.txt`
+  `results/agriculture_quality_distribution.png`
+- `requirements.txt`
+- `README.md`
 
 ## 2. Smart Industrial Quality Evaluation
 
-This experiment validates the framework using real-world data from the ToN-IoT dataset. It compares baseline performance metrics with weighted quality scores across industrial environments.
+Validates the framework using real-world data from the ToN-IoT dataset. Compares baseline performance metrics with weighted quality scores across industrial environments.
 
-Folder: Smart industrial quality evaluation
+Folder: `Smart Industrial Quality Evaluation`
 
 Contents:
-- data/industrial_quality_data.csv
-- quality_industrial.py
-- results/industrial_results.txt
-- results/industrial_quality_distribution.png
-- requirements.txt
-- README.md
+- `data/industrial_quality_data.csv`
+- `quality_industrail.py`
+- `results/industrial_results.txt`
+- `results/industrial_quality_distribution.png`
+- `requirements.txt`
+- `README.md`
 
-## How to Run
+## How to Run with Docker
 
-Each experiment is self-contained. Navigate into the desired folder and follow the instructions in its README.md file.
+You can run either experiment using Docker and the unified `main.py` controller.
 
-## License
+### 1. Build the Docker image
 
-You may include a license file here if you plan to share or publish the project.
+docker-compose build
+
+2. Run Agriculture Simulation
+
+docker-compose up
+
+(Default command runs agriculture simulation. To change, edit `command:` in `docker-compose.yml`)
+
+3. Run Industrial Simulation
+
+Edit `docker-compose.yml`:
+
+command: python main.py industrial
+
+Then run:
+
+docker-compose up
+
+Manual Run (Without Docker)
+
+You can also run each experiment manually:
+
+python main.py agriculture
+python main.py industrial
+
+
+License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
