@@ -1,0 +1,2 @@
+Paired t-test: t=18.452, p=0.00030
+Cohen's d: 1.84
